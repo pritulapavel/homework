@@ -10,15 +10,22 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
     <link rel="manifest" href="assets/img/favicons/site.webmanifest">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <title>TechBlog - The news from TechBlog</title>
 </head>
 
-<body>
+<body class="animate__animated animate__flip">
     <header>
         <div class="header-inner">
             <div class="logo">
                 <a href="#"><img src="assets/img/logo.png" alt="TechBlog Logo"></a>
             </div>
+            <button class="menu-toggle" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <nav class="main-nav" aria-label="Main header navigation">
                 <ul>
                     <li><a href="#">მთავარი</a></li>
@@ -28,6 +35,16 @@
                     <li><a href="#">კონტაქტი</a></li>
                 </ul>
             </nav>
+            <nav class="mobile-menu" aria-label="Mobile menu">
+                <ul>
+                    <li><a href="#">მთავარი</a></li>
+                    <li><a href="#">ბლოგი</a></li>
+                    <li><a href="#">კატეგორიები</a></li>
+                    <li><a href="#">ჩვენს შესახებ</a></li>
+                    <li><a href="#">კონტაქტი</a></li>
+                </ul>
+            </nav>
+             <div class="menu-overlay"></div>
         </div>
     </header>
     <main>
@@ -37,80 +54,13 @@
         </section>
         <section class="content">
             <h3>ბოლო სიახლეები</h3>
-            <div class="articles">
-                <article>
-                    <div class="article-image violett"></div>
-                    <div class="article_content">
-                        <div class="article-meta">
-                            <time datetime="2026-01-08">8 იანვარი</time>
-                            <span class="author">ავტორი: ნინო გელაშვილი</span>
-                        </div>
-                        <h4>ხელოვნური ინტელექტის მომავალი 2026 წელს</h4>
-                        <p>გაეცანით უახლეს ტენდენციებს AI-ის სფეროში და რა ცვლილებებს მოგვიტანს ახალი წელი. ექსპერტები
-                            აანალიზებენ ტექნოლოგიის განვითარების ძირითად მიმართულებებს.</p>
-                    </div>
-                </article>
-                <article>
-                    <div class="article-image pink"></div>
-                    <div class="article_content">
-                        <div class="article-meta">
-                            <time datetime="2026-01-08">8 იანვარი</time>
-                            <span class="author">ავტორი: ნინო გელაშვილი</span>
-                        </div>
-                        <h4>ხელოვნური ინტელექტის მომავალი 2026 წელს</h4>
-                        <p>გაეცანით უახლეს ტენდენციებს AI-ის სფეროში და რა ცვლილებებს მოგვიტანს ახალი წელი. ექსპერტები
-                            აანალიზებენ ტექნოლოგიის განვითარების ძირითად მიმართულებებს.</p>
-                    </div>
-                </article>
-                <article>
-                    <div class="article-image blue"></div>
-                    <div class="article_content">
-                        <div class="article-meta">
-                            <time datetime="2026-01-08">8 იანვარი</time>
-                            <span class="author">ავტორი: ნინო გელაშვილი</span>
-                        </div>
-                        <h4>ხელოვნური ინტელექტის მომავალი 2026 წელს</h4>
-                        <p>გაეცანით უახლეს ტენდენციებს AI-ის სფეროში და რა ცვლილებებს მოგვიტანს ახალი წელი. ექსპერტები
-                            აანალიზებენ ტექნოლოგიის განვითარების ძირითად მიმართულებებს.</p>
-                    </div>
-                </article>
-                <article>
-                    <div class="article-image lightlime"></div>
-                    <div class="article_content">
-                        <div class="article-meta">
-                            <time datetime="2026-01-08">8 იანვარი</time>
-                            <span class="author">ავტორი: ნინო გელაშვილი</span>
-                        </div>
-                        <h4>ხელოვნური ინტელექტის მომავალი 2026 წელს</h4>
-                        <p>გაეცანით უახლეს ტენდენციებს AI-ის სფეროში და რა ცვლილებებს მოგვიტანს ახალი წელი. ექსპერტები
-                            აანალიზებენ ტექნოლოგიის განვითარების ძირითად მიმართულებებს.</p>
-                    </div>
-                </article>
-                <article>
-                    <div class="article-image lightellow"></div>
-                    <div class="article_content">
-                        <div class="article-meta">
-                            <time datetime="2026-01-08">8 იანვარი</time>
-                            <span class="author">ავტორი: ნინო გელაშვილი</span>
-                        </div>
-                        <h4>ხელოვნური ინტელექტის მომავალი 2026 წელს</h4>
-                        <p>გაეცანით უახლეს ტენდენციებს AI-ის სფეროში და რა ცვლილებებს მოგვიტანს ახალი წელი. ექსპერტები
-                            აანალიზებენ ტექნოლოგიის განვითარების ძირითად მიმართულებებს.</p>
-                    </div>
-                </article>
-                <article>
-                    <div class="article-image lightorange"></div>
-                    <div class="article_content">
-                        <div class="article-meta">
-                            <time datetime="2026-01-08">8 იანვარი</time>
-                            <span class="author">ავტორი: ნინო გელაშვილი</span>
-                        </div>
-                        <h4>ხელოვნური ინტელექტის მომავალი 2026 წელს</h4>
-                        <p>გაეცანით უახლეს ტენდენციებს AI-ის სფეროში და რა ცვლილებებს მოგვიტანს ახალი წელი. ექსპერტები
-                            აანალიზებენ ტექნოლოგიის განვითარების ძირითად მიმართულებებს.</p>
-                    </div>
-                </article>
+            <div class="articles" id="newsContainer">
+                <div id="newsLoader" class="news-loader">
+                    <div class="news-loader-bar"></div>
+                    <span>სიახლეები იტვირთება...</span>
+                </div>
             </div>
+                
         </section>
     </main>
     <footer>
@@ -151,6 +101,72 @@
             </div>
         </div>
     </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const container = document.getElementById('newsContainer');
+        const loader = document.getElementById('newsLoader');
+        const min_loading_time = 2000; // Minimum loading time in milliseconds for see loading effect
+        const startTime = Date.now(); // Start time to calculate elapsed time
+
+        // use api call for travel news and render them
+        fetch('https://gogex.ge/api/get_news/ka')
+            .then(res => res.json())
+            .then(result => {
+                const elapsed = Date.now() - startTime;
+                const delay = Math.max(0, min_loading_time - elapsed);
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    if (!result.success || !result.data.length) {
+                        container.insertAdjacentHTML('beforeend','<p>სიახლეები ვერ მოიძებნა</p>');
+                        return;
+                    }
+                    result.data.forEach(item => {
+                        container.insertAdjacentHTML('beforeend', `
+                            <article>
+                                <div class="article-image"
+                                    style="background-image:url('${item.image}'); background-size:cover;">
+                                </div>
+                                <div class="article_content">
+                                    <div class="article-meta">
+                                        <time datetime="${item.updated_at}">
+                                            ${item.day} ${item.month_name}
+                                        </time>
+                                        <span class="author">ავტორი: ${item.author}</span>
+                                    </div>
+                                    <h4>${item.title}</h4>
+                                    <p>${item.description}</p>
+                                </div>
+                            </article>
+                        `);
+                    });
+                }, delay);
+            })
+            .catch(() => {
+                const elapsed = Date.now() - startTime;
+                const delay = Math.max(0, min_loading_time - elapsed);
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    container.insertAdjacentHTML('beforeend','<p>სიახლეები ვერ მოიძებნა</p>');
+                }, delay);
+            });
+
+            // menu toggle functionality for mobile
+            const toggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.menu-overlay');
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                toggle.classList.remove('active');
+            }
+            toggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+            overlay.addEventListener('click', closeMenu);
+        });
+    </script>
 </body>
 
 </html>
