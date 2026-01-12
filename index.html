@@ -20,11 +20,12 @@
             <div class="logo">
                 <a href="#"><img src="assets/img/logo.png" alt="TechBlog Logo"></a>
             </div>
-            <button class="menu-toggle" aria-label="Open menu">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </label>
 
             <nav class="main-nav" aria-label="Main header navigation">
                 <ul>
@@ -44,7 +45,7 @@
                     <li><a href="#">კონტაქტი</a></li>
                 </ul>
             </nav>
-             <div class="menu-overlay"></div>
+            <label for="menu-toggle" class="menu-overlay"></label>
         </div>
     </header>
     <main>
@@ -102,14 +103,14 @@
         </div>
     </footer>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const container = document.getElementById('newsContainer');
-        const loader = document.getElementById('newsLoader');
-        const min_loading_time = 2000; // Minimum loading time in milliseconds for see loading effect
-        const startTime = Date.now(); // Start time to calculate elapsed time
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.getElementById('newsContainer');
+            const loader = document.getElementById('newsLoader');
+            const min_loading_time = 2000; // Minimum loading time in milliseconds for see loading effect
+            const startTime = Date.now(); // Start time to calculate elapsed time
 
-        // use api call for travel news and render them
-        fetch('https://gogex.ge/api/get_news/ka')
+            // use api call for travel news and render them
+            fetch('https://gogex.ge/api/get_news/ka')
             .then(res => res.json())
             .then(result => {
                 const elapsed = Date.now() - startTime;
@@ -123,21 +124,37 @@
                     result.data.forEach(item => {
                         container.insertAdjacentHTML('beforeend', `
                             <article>
-                                <div class="article-image"
-                                    style="background-image:url('${item.image}'); background-size:cover;">
-                                </div>
-                                <div class="article_content">
-                                    <div class="article-meta">
-                                        <time datetime="${item.updated_at}">
-                                            ${item.day} ${item.month_name}
-                                        </time>
-                                        <span class="author">ავტორი: ${item.author}</span>
+                                <a href="#" class="article-link"
+                                data-title="${item.title}"
+                                data-image="${item.image}"
+                                data-description="${item.description_full}"
+                                data-author="${item.author}"
+                                data-date="${item.day} ${item.month_name}"
+                                >
+                                    <figure class="article-image">
+                                        <img 
+                                            src="${item.image}" 
+                                            alt="${item.title}" 
+                                            loading="lazy"
+                                        >
+                                        <figcaption class="visually-hidden">
+                                            ${item.title}
+                                        </figcaption>
+                                    </figure>
+                                    <div class="article_content">
+                                        <div class="article-meta">
+                                            <time>
+                                                ${item.day} ${item.month_name}
+                                            </time>
+                                            <span class="author">ავტორი: ${item.author}</span>
+                                        </div>
+                                        <h4>${item.title}</h4>
+                                        <p>${item.description}</p>
                                     </div>
-                                    <h4>${item.title}</h4>
-                                    <p>${item.description}</p>
-                                </div>
+                                </a>
                             </article>
                         `);
+                        console.log(item);
                     });
                 }, delay);
             })
@@ -149,24 +166,52 @@
                     container.insertAdjacentHTML('beforeend','<p>სიახლეები ვერ მოიძებნა</p>');
                 }, delay);
             });
+            document.addEventListener('click', function (e) {
+                const link = e.target.closest('.article-link');
+                if (!link) return;
+                e.preventDefault();
+                const modal = document.getElementById('myFullNewsContainer');
+                modal.querySelector('h4').textContent = link.dataset.title;
+                modal.querySelector('p').textContent = link.dataset.description;
+                modal.querySelector('time').textContent = link.dataset.date;
+                modal.querySelector('.author').textContent = `ავტორი: ${link.dataset.author}`;
 
-            // menu toggle functionality for mobile
-            const toggle = document.querySelector('.menu-toggle');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const overlay = document.querySelector('.menu-overlay');
-            function closeMenu() {
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                toggle.classList.remove('active');
-            }
-            toggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                toggle.classList.toggle('active');
+                const img = modal.querySelector('img');
+                img.src = link.dataset.image;
+                img.alt = link.dataset.title;
+                modal.classList.add('open');
+
+                const figcaption = modal.querySelector('figcaption');
+                figcaption.textContent = link.dataset.title;
             });
-            overlay.addEventListener('click', closeMenu);
+            document.getElementById('myFullNewsContainer').addEventListener('click', function (e) {
+                if (
+                    e.target.classList.contains('news-modal-overlay') ||
+                    e.target.classList.contains('news-modal-close')
+                ) {
+                    this.classList.remove('open');
+                }
+            });
         });
     </script>
+    <div class="news-modal" id="myFullNewsContainer">
+        <div class="news-modal-overlay"></div>
+        <div class="news-modal-content animate__animated animate__tada">
+            <button class="news-modal-close" aria-label="Close modal box">X</button>
+            <figure class="news-modal-image">
+                <img src="" alt="">
+                <figcaption class="visually-hidden"></figcaption>
+            </figure>
+            <div class="news-modal-body">
+                <div class="news-modal-meta">
+                    <time></time>
+                    <span class="author"></span>
+                </div>
+                <h4></h4>
+                <p></p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
