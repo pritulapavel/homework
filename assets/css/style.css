@@ -135,6 +135,11 @@ h3 {
     font-size: 36px;
 }
 
+.container { 
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
 .content {
     max-width: 1240px;
     margin: 50px auto;
